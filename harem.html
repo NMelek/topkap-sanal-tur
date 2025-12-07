@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harem — Topkapı Sarayı Sanal Sergi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* STİL KODLARI (HAREM) - önceki tasarımınızla aynı */
+    :root {
+      --saray-kirmizisi: #5d0f1b;
+      --altin-sarisi: #c9b07a;
+      --koyu-zemin: #1a1a1a;
+      --acik-zemin: #f7f7f7;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Roboto', sans-serif;background-color:var(--koyu-zemin);color:var(--acik-zemin)}
+    .hero{
+      min-height:100vh;
+      background-image:url('topkapi_harem_bg.jpg');
+      background-size:cover;
+      background-attachment: fixed;
+      background-position:center;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:60px 20px;
+    }
+    .overlay{
+      width:100%;
+      max-width:1200px;
+      background:rgba(0,0,0,0.65);
+      padding:35px;
+      border-radius:18px;
+      box-shadow:0 15px 30px rgba(0,0,0,0.7);
+    }
+    .page-title{
+      font-family:'Playfair Display', serif;
+      font-size:40px;
+      font-weight:900;
+      margin-bottom:20px;
+      text-align:center;
+      color:var(--altin-sarisi);
+      text-shadow:3px 3px 8px rgba(0,0,0,1);
+      border-bottom:3px solid var(--saray-kirmizisi);
+      padding-bottom:10px;
+    }
+    .toc{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-bottom:30px;
+      padding:15px;
+      background:rgba(255,255,255,0.05);
+      border-radius:10px;
+    }
+    .toc a{
+      background:var(--saray-kirmizisi);
+      color:white;
+      padding:10px 18px;
+      border-radius:25px;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow:0 4px 8px rgba(0,0,0,0.4);
+      transition:transform 0.2s, background-color 0.2s;
+    }
+    .toc a:hover{
+      background:var(--altin-sarisi);
+      color:var(--saray-kirmizisi);
+      transform:translateY(-2px);
+    }
+    .list-intro{
+      margin-bottom:20px;
+      color:var(--altin-sarisi);
+      text-align:center;
+      font-style:italic;
+      padding:0 10px;
+    }
+    .esers{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+    .eser{
+      background:rgba(255,255,255,0.08);
+      padding:25px;
+      border-radius:15px;
+      border-left:5px solid var(--altin-sarisi);
+      box-shadow:0 8px 15px rgba(0,0,0,0.5);
+      transition:background-color 0.3s;
+    }
+    .eser:hover{
+        background:rgba(255,255,255,0.12);
+    }
+    .eser h2{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      margin-bottom:15px;
+      color:var(--acik-zemin);
+      font-weight:700;
+      border-bottom:1px dashed rgba(255,255,255,0.3);
+      padding-bottom:5px;
+    }
+    .eser .media{
+      display:flex;
+      gap:25px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .eser img{
+      width:380px;
+      max-width:100%;
+      height:auto;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.8);
+      border:3px solid var(--saray-kirmizisi);
+    }
+    .eser .desc{
+      flex:1;
+      min-width:250px;
+      color:var(--acik-zemin);
+      line-height:1.8;
+      font-weight:300;
+      padding-top:5px;
+    }
+    .desc strong {
+        color: var(--altin-sarisi);
+        font-weight: 700;
+    }
+    @media (max-width:900px){
+      .hero{padding:20px 10px}
+      .overlay{padding:25px}
+      .page-title{font-size:32px}
+      .eser h2{font-size:24px}
+      .eser .media{flex-direction:column}
+      .eser img{width:100%;}
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay" role="main">
+      <div id="page-title" class="page-title">⚜️ Topkapı Sarayı Harem Eserleri</div>
+
+      <nav id="toc" class="toc" aria-label="Harem maddelerine atla">
+        <a id="toc-altin-tha" href="#altin_tha">Altın Taht</a>
+        <a id="toc-harem-kapisi" href="#harem_kapisi">Kapı Kitabesi</a>
+        <a id="toc-hunkar-sofra" href="#hunkar_sofra">Hünkar Sofrası</a>
+        <a id="toc-kaftan" href="#kaftan">Kaftanlar</a>
+        <a id="toc-padisah-odasi" href="#padisah_odasi">Padişah Odası</a>
+        <a id="toc-sorguclar" href="#sorguclar">Sorguçlar</a>
+        <a id="toc-valide" href="#valide">Valide Sultan</a>
+      </nav>
+
+      <p id="list-intro" class="list-intro">Aşağıda Harem bölümünde sergilenen ve sarayın ihtişamını yansıtan özel eserler listelenmiştir. Daha fazla bilgi almak istediğiniz eseri belirtmeniz yeterlidir.</p>
+
+      <div class="esers">
+
+        <section id="altin_tha" class="eser" aria-labelledby="altin-title">
+          <h2 id="altin-title">Altın Taht</h2>
+          <div class="media">
+            <img src="/static/images/altin_taht.jpg" alt="Altın Taht" />
+            <div id="desc-altin-tha" class="desc">
+                Altın Taht, <strong>padişahın resmi törenlerde ve Cuma alaylarında kullandığı gösterişli bir hükümdarlık sembolüdür.</strong> Tamamı altın kaplamalar ve yer yer yakut, zümrüt gibi değerli taş süslemeleriyle bezenmiştir. Tahtın üzerindeki işçilik, Osmanlı İmparatorluğu'nun zirvedeki sanat anlayışını gözler önüne serer.
+            </div>
+          </div>
+        </section>
+
+        <section id="harem_kapisi" class="eser" aria-labelledby="harem-kapisi-title">
+          <h2 id="harem-kapisi-title">Harem Kapısı Kitabesi</h2>
+          <div class="media">
+            <img src="/static/images/harem_kapisi.jpg" alt="Harem Kapısı Kitabesi" />
+            <div id="desc-harem-kapisi" class="desc">
+                Harem'e girişin ana noktası olan kapı üzerinde yer alan bu <strong>kitabe, genellikle yapım veya önemli bir onarım tarihini gösteren, dönemin hattatlarının ustalık eseri bir yazıttır.</strong> Kitabede yer alan metinler, Saray'ın tarihine ışık tutan önemli bilgiler içerir. Taş işçiliğindeki incelik ve hat sanatının zarafeti dikkat çekicidir.
+            </div>
+          </div>
+        </section>
+
+        <section id="hunkar_sofra" class="eser" aria-labelledby="hunkar-sofra-title">
+          <h2 id="hunkar-sofra-title">Hünkar Sofrası</h2>
+          <div class="media">
+            <img src="/static/images/hunkar_sofrasi.jpg" alt="Hünkar Sofrası" />
+            <div id="desc-hunkar-sofra" class="desc">
+                Hünkar Sofrası alanı, <strong>padişah ve saray ileri gelenleri için özel günlerde hazırlanan ziyafet sofralarının düzenini canlandırır.</strong> Sergilenen eserler arasında birbirinden değerli porselen, altın ve gümüş sofralık takımlar, servis kapları ve özel sunum usulleri bulunur. Bu sergi, saray mutfak ve görgü kültürünü yansıtır.
+            </div>
+          </div>
+        </section>
+
+        <section id="kaftan" class="eser" aria-labelledby="kaftan-title">
+          <h2 id="kaftan-title">Kaftan Koleksiyonu</h2>
+          <div class="media">
+            <img src="/static/images/kaftan_koleksiyonu.jpg" alt="Kaftan Koleksiyonu" />
+            <div id="desc-kaftan" class="desc">
+                Bu koleksiyon, ipek, kadife, sırma ve özel işlemeli kumaşlardan yapılmış <strong>padişahlar ve saray ailesi mensuplarına ait göz kamaştırıcı kaftanlardan oluşur.</strong> Her bir kaftan, ait olduğu dönemin moda, kumaş teknolojisi ve süsleme sanatları hakkında değerli bilgiler sunar.
+            </div>
+          </div>
+        </section>
+
+        <section id="padisah_odasi" class="eser" aria-labelledby="padisah-title">
+          <h2 id="padisah-title">Padişahın Özel Odası</h2>
+          <div class="media">
+            <img src="/static/images/padisah_ozel_odasi.jpg" alt="Padişahın Özel Odası" />
+            <div id="desc-padisah-odasi" class="desc">
+                Padişahın Harem'deki özel yaşam alanını temsil eden bu oda, <strong>dinlenme, ibadet ve özel görüşmeler için kullanılan mobilya ve kişisel eşyaları barındırır.</strong> Oda dekorasyonu, dönemin iç mimarisindeki lüksü ve saray zevkini yansıtan çini panolar, ahşap işçiliği ve kumaşlarla donatılmıştır.
+            </div>
+          </div>
+        </section>
+
+        <section id="sorguclar" class="eser" aria-labelledby="sorguc-title">
+          <h2 id="sorguc-title">Sorguçlar</h2>
+          <div class="media">
+            <img src="/static/images/sorguclar.jpg" alt="Sorguçlar" />
+            <div id="desc-sorguclar" class="desc">
+                Sorguçlar, <strong>padişahların ve önemli devlet adamlarının başlıklarında, törenlerde kullanılan, yetki ve rütbe belirten aksesuarlardır.</strong> Genellikle değerli taşlar, elmaslar ve özel olarak seçilmiş tüylerle (örneğin turna tüyü) zenginleştirilmiş bu parçalar, saray protokolünün bir parçasıdır.
+            </div>
+          </div>
+        </section>
+
+        <section id="valide" class="eser" aria-labelledby="valide-title">
+          <h2 id="valide-title">Valide Sultan Dairesi Eşyaları</h2>
+          <div class="media">
+            <img src="/static/images/valide_sultan.jpg" alt="Valide Sultan Dairesi Eşyaları" />
+            <div id="desc-valide" class="desc">
+                Valide Sultan, padişahın annesi olarak Harem'deki en yetkili kişidir. Bu başlık altında, <strong>Valide Sultan'ın odalarında kullanılan günlük eşyalar, kişisel objeler ve dairesinin dekoratif parçaları sergilenir.</strong> Bu eserler, saraydaki kadınların yaşam standartlarını ve zevklerini yansıtır.
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+
+<script>
+// Dil çevirileri için veri yapısı
+const translations = {
+    'tr': {
+        pageTitle: '⚜️ Topkapı Sarayı Harem Eserleri',
+        listIntro: 'Aşağıda Harem bölümünde sergilenen ve sarayın ihtişamını yansıtan özel eserler listelenmiştir. Daha fazla bilgi almak istediğiniz eseri belirtmeniz yeterlidir.',
+        // Eser İsimleri
+        tocAltin: 'Altın Taht', tocKapi: 'Kapı Kitabesi', tocSofra: 'Hünkar Sofrası', tocKaftan: 'Kaftanlar', tocOda: 'Padişah Odası', tocSorguc: 'Sorguçlar', tocValide: 'Valide Sultan',
+        titleAltin: 'Altın Taht', titleKapi: 'Harem Kapısı Kitabesi', titleSofra: 'Hünkar Sofrası', titleKaftan: 'Kaftan Koleksiyonu', titleOda: 'Padişahın Özel Odası', titleSorguc: 'Sorguçlar', titleValide: 'Valide Sultan Dairesi Eşyaları',
+        // Eser Açıklamaları (TR)
+        descAltin: 'Altın Taht, <strong>padişahın resmi törenlerde ve Cuma alaylarında kullandığı gösterişli bir hükümdarlık sembolüdür.</strong> Tamamı altın kaplamalar ve değerli taş süslemeleriyle bezenmiştir.',
+        descKapi: 'Harem kapısı üzerindeki bu <strong>kitabe, yapım veya onarım bilgilerini ve önemli tarihleri içerir.</strong> Yazıtın taş işçiliği ve hat sanatı dikkat çekicidir.',
+        descSofra: 'Hünkar Sofrası alanı, <strong>padişah ve saray ileri gelenleri için özel günlerde hazırlanan ziyafet sofralarının düzenini canlandırır.</strong> Servis takımları tarihsel değer taşır.',
+        descKaftan: 'Kaftan koleksiyonunda ipek, kadife ve işlemeli kumaşlardan yapılmış <strong>padişahlar ve saray ailesi mensuplarına ait göz kamaştırıcı kaftanlardan oluşur.</strong>',
+        descOda: 'Padişahın özel odası, <strong>dinlenme ve özel görüşmeler için kullanılan mobilya ve kişisel eşyaların bulunduğu alandır.</strong> Oda dekorasyonu saray zevkini yansıtır.',
+        descSorguc: 'Sorguçlar, <strong>padişahların ve önemli devlet adamlarının başlıklarında, törenlerde kullanılan, yetki ve rütbe belirten aksesuarlardır.</strong> Değerli taş ve tüylü işlemlerle zenginleştirilmiştir.',
+        descValide: 'Valide Sultan odalarında kullanılan <strong>günlük eşyalar, kişisel objeler ve dairesinin dekoratif parçaları sergilenir.</strong> Bu eşyalar saray hayatının iç yüzünü gösterir.',
+    },
+    'en': {
+        pageTitle: '⚜️ Topkapi Palace Harem Artifacts',
+        listIntro: 'Below is a list of special artifacts displayed in the Harem section, reflecting the splendor of the palace. Please specify which artifact you would like more information about.',
+        // Eser İsimleri (EN)
+        tocAltin: 'Golden Throne', tocKapi: 'Gate Inscription', tocSofra: 'Sultan’s Dining Table', tocKaftan: 'Kaftans', tocOda: 'Sultan’s Private Chamber', tocSorguc: 'Aigrettes (Sorguç)', tocValide: 'Valide Sultan’s Quarters',
+        titleAltin: 'Golden Throne', titleKapi: 'Harem Gate Inscription', titleSofra: 'Sultan’s Dining Table', titleKaftan: 'Kaftan Collection', titleOda: 'Sultan’s Private Chamber', titleSorguc: 'Aigrettes', titleValide: 'Valide Sultan’s Quarters Artifacts',
+        // Eser Açıklamaları (EN)
+        descAltin: 'The Golden Throne is a <strong>symbol of sovereignty used by the Sultan in official ceremonies and Friday processions.</strong> It is entirely gilded and adorned with precious stones like rubies and emeralds.',
+        descKapi: 'The <strong>inscription on the Harem gate contains construction or renovation details and important dates.</strong> The stonework and calligraphy of the script are noteworthy.',
+        descSofra: 'The Sultan’s Dining Table exhibit recreates the setting of <strong>banquets prepared for the Sultan and palace dignitaries on special occasions.</strong> The tableware holds historical value.',
+        descKaftan: 'The Kaftan Collection consists of dazzling kaftans belonging to <strong>Sultans and members of the palace family, made from silk, velvet, and embroidered fabrics.</strong>',
+        descOda: 'The Sultan\'s Private Chamber is the area containing <strong>furniture and personal belongings used for resting and private meetings.</strong> The room’s decor reflects the palace taste.',
+        descSorguc: 'Aigrettes (Sorguç) are <strong>accessories used on the headwear of Sultans and important statesmen during ceremonies, indicating rank and authority.</strong> They are enriched with precious stones and feathers.',
+        descValide: 'Displayed under this title are <strong>daily objects, personal items, and decorative pieces used in the Valide Sultan’s rooms.</strong> These items reveal the inner workings of palace life.',
+    },
+    'ru': {
+        pageTitle: '⚜️ Экспонаты гарема дворца Топкапы',
+        listIntro: 'Ниже приведен список особых экспонатов, выставленных в секции Гарема, отражающих великолепие дворца. Укажите, о каком экспонате вы хотели бы получить дополнительную информацию.',
+        // Eser İsimleri (RU)
+        tocAltin: 'Золотой трон', tocKapi: 'Надпись на воротах', tocSofra: 'Стол султана', tocKaftan: 'Кафтаны', tocOda: 'Личные покои султана', tocSorguc: 'Эгреты (Соргуч)', tocValide: 'Покои Валиде-султан',
+        titleAltin: 'Золотой трон', titleKapi: 'Надпись на воротах Гарема', titleSofra: 'Стол султана', titleKaftan: 'Коллекция кафтанов', titleOda: 'Личные покои султана', titleSorguc: 'Эгреты (Соргуч)', titleValide: 'Предметы покоев Валиде-султан',
+        // Eser Açıklamaları (RU)
+        descAltin: 'Золотой Трон — это <strong>символ суверенитета, используемый султаном во время официальных церемоний и пятничных процессий.</strong> Он полностью позолочен и украшен драгоценными камнями, такими как рубины и изумруды.',
+        descKapi: '<strong>Надпись на воротах Гарема содержит информацию о строительстве или ремонте и важные даты.</strong> Каменная резьба и каллиграфия заслуживают внимания.',
+        descSofra: 'Выставка "Стол султана" воссоздает обстановку <strong>пиров, приготовленных для султана и дворцовой знати в особых случаях.</strong> Столовые приборы имеют историческую ценность.',
+        descKaftan: 'Коллекция кафтанов состоит из ослепительных кафтанов, принадлежавших <strong>султанам и членам дворцовой семьи, изготовленных из шелка, бархата и вышитых тканей.</strong>',
+        descOda: 'Личные покои султана — это место, где находятся <strong>мебель и личные вещи, используемые для отдыха и частных встреч.</strong> Декор отражает вкус дворца.',
+        descSorguc: 'Эгреты (Соргуч) — это <strong>аксессуары, используемые на головных уборах султанов и важных государственных деятелей, указывающие на ранг и авторитет.</strong> Они украшены драгоценными камнями и перьями.',
+        descValide: 'Здесь представлены <strong>повседневные предметы, личные вещи и декоративные элементы, использовавшиеся в покоях Валиде-султан.</strong> Эти предметы показывают внутреннюю жизнь дворца.',
+    },
+    'ar': {
+        pageTitle: '⚜️ قطع الحريم في قصر طوب قابي',
+        listIntro: 'فيما يلي قائمة بالقطع الخاصة المعروضة في قسم الحريم، والتي تعكس فخامة القصر. يرجى تحديد القطعة التي تريد المزيد من المعلومات عنها.',
+        // Eser İsimleri (AR)
+        tocAltin: 'العرش الذهبي', tocKapi: 'نقش الباب', tocSofra: 'مائدة السلطان', tocKaftan: 'القياطين', tocOda: 'غرفة السلطان الخاصة', tocSorguc: 'الريش (السورغوتش)', tocValide: 'جناح السلطانة الأم',
+        titleAltin: 'العرش الذهبي', titleKapi: 'نقش باب الحريم', titleSofra: 'مائدة السلطان', titleKaftan: 'مجموعة القياطين', titleOda: 'غرفة السلطان الخاصة', titleSorguc: 'الريش (السورغوتش)', tocValide: 'مقتنيات جناح السلطانة الأم',
+        // Eser Açıklamaları (AR)
+        descAltin: 'العرش الذهبي هو <strong>رمز للسيادة كان يستخدمه السلطان في الاحتفالات الرسمية ومواكب الجمعة.</strong> وهو مذهب بالكامل ومزين بأحجار كريمة مثل الياقوت والزمرد.',
+        descKapi: 'يحتوي <strong>النقش الموجود على باب الحريم على تفاصيل البناء أو التجديد وتواريخ مهمة.</strong> الجودة الفنية للنقش الحجري والخط العربي ملفتة للنظر.',
+        descSofra: 'تعيد معروضات مائدة السلطان تمثيل إعداد <strong>المآدب التي تُجهز للسلطان وكبار رجال البلاط في المناسبات الخاصة.</strong> أدوات المائدة لها قيمة تاريخية.',
+        descKaftan: 'تتكون مجموعة القياطين من قياطين مبهرة تخص <strong>السلاطين وأفراد عائلة القصر، مصنوعة من الحرير والمخمل والأقمشة المطرزة.</strong>',
+        descOda: 'غرفة السلطان الخاصة هي المنطقة التي تحتوي على <strong>الأثاث والمقتنيات الشخصية المستخدمة للراحة والاجتماعات الخاصة.</strong> يعكس ديكور الغرفة ذوق القصر.',
+        descSorguc: 'الريش (السورغوتش) هي <strong>إكسسوارات تستخدم على أغطية رأس السلاطين وكبار رجال الدولة في الاحتفالات، وتشير إلى الرتبة والسلطة.</strong> وهي مزينة بأحجار كريمة وريش.',
+        descValide: 'تُعرض هنا <strong>الأشياء اليومية والمقتنيات الشخصية والقطع الزخرفية المستخدمة في غرف السلطانة الأم.</strong> تكشف هذه العناصر عن الحياة الداخلية للقصر.',
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    // URL'den dil parametresini al
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang') || 'tr'; // Eğer parametre yoksa varsayılan olarak Türkçe
+
+    // Sayfa içeriğini güncelle
+    updateContent(lang);
+
+    // Yönlendirme bağlantılarını güncelle
+    updateLinks(lang);
+
+    // Arapça için sağdan sola okuma yönü (RTL) ayarı
+    if (lang === 'ar') {
+        document.body.style.direction = 'rtl';
+    }
+});
+
+function updateContent(lang) {
+    const t = translations[lang];
+
+    // Ana Başlık ve Giriş Metni
+    document.getElementById('page-title').innerHTML = t.pageTitle;
+    document.getElementById('list-intro').innerHTML = t.listIntro;
+
+    // TOC (İçerik Listesi) Başlıkları
+    document.getElementById('toc-altin-tha').innerText = t.tocAltin;
+    document.getElementById('toc-harem-kapisi').innerText = t.tocKapi;
+    document.getElementById('toc-hunkar-sofra').innerText = t.tocSofra;
+    document.getElementById('toc-kaftan').innerText = t.tocKaftan;
+    document.getElementById('toc-padisah-odasi').innerText = t.tocOda;
+    document.getElementById('toc-sorguclar').innerText = t.tocSorguc;
+    document.getElementById('toc-valide').innerText = t.tocValide;
+
+    // Eser Başlıkları ve Açıklamaları (Bilgi Kartları)
+    document.getElementById('altin-title').innerText = t.titleAltin;
+    document.getElementById('desc-altin-tha').innerHTML = t.descAltin; // BİLGİ KARTI
+
+    document.getElementById('harem-kapisi-title').innerText = t.titleKapi;
+    document.getElementById('desc-harem-kapisi').innerHTML = t.descKapi; // BİLGİ KARTI
+
+    document.getElementById('hunkar-sofra-title').innerText = t.titleSofra;
+    document.getElementById('desc-hunkar-sofra').innerHTML = t.descSofra; // BİLGİ KARTI
+
+    document.getElementById('kaftan-title').innerText = t.titleKaftan;
+    document.getElementById('desc-kaftan').innerHTML = t.descKaftan; // BİLGİ KARTI
+
+    document.getElementById('padisah-title').innerText = t.titleOda;
+    document.getElementById('desc-padisah-odasi').innerHTML = t.descOda; // BİLGİ KARTI
+
+    document.getElementById('sorguc-title').innerText = t.titleSorguc;
+    document.getElementById('desc-sorguclar').innerHTML = t.descSorguc; // BİLGİ KARTI
+
+    document.getElementById('valide-title').innerText = t.titleValide;
+    document.getElementById('desc-valide').innerHTML = t.descValide; // BİLGİ KARTI
+}
+
+function updateLinks(lang) {
+    // Sayfa içi linkler var, onlar otomatik çalışıyor.
+}
+
+</script>
+</body>
+</html>
