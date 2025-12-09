@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Topkapı Sarayı  | Sanal Sergi</title>
+<title>Topkapı Sarayı Dijital Tur | Sanal Sergi</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* GENEL AYARLAR */
 :root {
-    --primary-color: #5d0f1b;
-    --secondary-color: #c9b07a;
-    --background-dark: #0e1a40;
-    --background-light: #f5f5f7;
+    --primary-color: #5d0f1b; /* Koyu Kırmızı/Bordo */
+    --secondary-color: #c9b07a; /* Altın Sarısı */
+    --background-dark: #f7f7f7; /* YENİ: Çok Açık Gri */
+    --background-light: #ffffff; /* YENİ: Saf Beyaz Zemin */
 }
 * { box-sizing: border-box; }
 body, html {
@@ -22,8 +22,9 @@ body, html {
     overflow-x: hidden;
 }
 
-/* HOŞ GELDİN EKRANI */
+/* HOŞ GELDİN EKRANI - Değişmedi */
 #welcome-screen {
+    /* topkapi.jpg resminizin bu dizinde olduğundan emin olun */
     background: url('topkapi.jpg') no-repeat center center/cover;
     width: 100%;
     height: 100%;
@@ -49,13 +50,13 @@ body, html {
     to { transform: scale(1.05); }
 }
 
-/* DİL SEÇİM EKRANI */
+/* DİL SEÇİM EKRANI - YENİ ARKAPLAN */
 #language-screen {
     display: none;
     width: 100%;
     min-height: 100vh;
-    background-color: var(--background-dark);
-    color: white;
+    background-color: var(--background-dark); /* YENİ */
+    color: var(--primary-color); /* YENİ: Koyu yazı rengi */
     text-align: center;
     padding: 60px 20px;
     opacity: 0;
@@ -73,17 +74,18 @@ body, html {
     gap: 25px;
 }
 .flag {
-    background: white;
+    background: var(--background-light); /* YENİ: Beyaz arka plan */
     border-radius: 15px;
     padding: 20px;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge */
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
+    border: 1px solid #ddd;
 }
 .flag:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 .flag img {
     width: 100%;
@@ -92,17 +94,17 @@ body, html {
     margin-bottom: 10px;
 }
 .flag p {
-    color: var(--background-dark);
+    color: var(--primary-color); /* Koyu metin */
     font-weight: 600;
     margin: 0;
 }
 
-/* BÖLÜMLER EKRANI */
+/* BÖLÜMLER EKRANI - YENİ ARKAPLAN */
 #menu-screen {
     display: none;
     width: 100%;
     min-height: 100vh;
-    background-color: var(--background-light);
+    background-color: var(--background-light); /* YENİ: Saf Beyaz */
     text-align: center;
     padding: 60px 20px;
     opacity: 0;
@@ -124,7 +126,7 @@ body, html {
 .section-box {
     width: 300px;
     height: 180px;
-    background: white;
+    background: var(--background-dark); /* Açık gri kutu */
     border-radius: 20px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -137,7 +139,7 @@ body, html {
     cursor: pointer;
     transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s;
     border: 3px solid var(--primary-color);
-    text-align: center; /* Bölüm isimlerinin ortalanması için */
+    text-align: center;
     padding: 10px;
 }
 .section-box:hover {
@@ -246,7 +248,7 @@ const translations = {
     }
 };
 
-let currentLang = 'tr'; // Varsayılan dil Türkçe
+let currentLang = 'tr';
 
 /* ✔ DİL DEĞİŞTİRME FONKSİYONU */
 function updateContent(lang) {
@@ -279,15 +281,14 @@ setTimeout(() => {
 /* ✔ DİL SEÇİLDİKTEN SONRA */
 function selectLanguage(lang) {
     currentLang = lang;
-    updateContent(lang); // İçerikleri yeni dile göre güncelle
+    updateContent(lang);
 
-    // Dil ekranını soldur ve menü ekranını getir
     document.getElementById("language-screen").classList.remove("active");
     document.getElementById("menu-screen").classList.add("active");
 }
 
 
-/* ✔ BUTON TIKLAMA */
+/* ✔ BUTON TIKLAMA ve DİL PARAMETRESİNİ AKTARMA */
 document.querySelectorAll('.section-box').forEach(box => {
     box.addEventListener('click', function() {
         const page = this.getAttribute('data-page');

@@ -1,355 +1,366 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Topkapı Sarayı Bahçe & Avlular</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    /* STİL KODLARI (BAHÇE) - önceki tasarımınızla aynı */
-    :root {
-      --bahce-yesili: #1a4f32;
-      --altin-sarisi: #c9b07a;
-      --koyu-zemin: #1a1a1a;
-      --acik-zemin: #f7f7f7;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="title-tag">Bahçeler ve Avlular | Topkapı Sarayı</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* Ortak CSS - Harem sayfasıyla aynı */
+:root {
+    --primary-color: #5d0f1b;
+    --background-light: #ffffff;
+    --secondary-bg: #f7f7f7;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: #333;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 900;
+}
+
+.content-box {
+    background: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* BÖLÜMLER LİSTESİ (TOC) */
+.relics-toc {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.relics-toc li a {
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.relics-toc li a:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* BÖLÜM DETAYLARI */
+.relic-section {
+    padding: 30px 0;
+    border-bottom: 1px solid #ddd;
+    scroll-margin-top: 100px;
+}
+.relic-section:last-child {
+    border-bottom: none;
+}
+.relic-section h2 {
+    color: var(--primary-color);
+    border-left: 5px solid var(--primary-color);
+    padding-left: 10px;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* RESİM VE METİN DÜZENİ */
+.relic-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+}
+.relic-content img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+.relic-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Geri Dön Butonu */
+.back-button {
+    display: block;
+    width: 250px;
+    margin: 40px auto 20px auto;
+    padding: 15px 30px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+.back-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Roboto', sans-serif;background-color:var(--koyu-zemin);color:var(--acik-zemin)}
-    .hero{
-      min-height:100vh;
-      background-image:url('topkapi_bahce_bg.jpg');
-      background-size:cover;
-      background-attachment: fixed;
-      background-position:center;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      padding:60px 20px;
+    .content-box {
+        padding: 20px;
     }
-    .overlay{
-      width:100%;
-      max-width:1200px;
-      background:rgba(0,0,0,0.7);
-      padding:35px;
-      border-radius:18px;
-      box-shadow:0 15px 30px rgba(0,0,0,0.7);
+    .relic-content {
+        flex-direction: column;
+        align-items: center;
     }
-    .page-title{
-      font-family:'Playfair Display', serif;
-      font-size:40px;
-      font-weight:900;
-      margin-bottom:20px;
-      text-align:center;
-      color:var(--altin-sarisi);
-      text-shadow:3px 3px 8px rgba(0,0,0,1);
-      border-bottom:3px solid var(--bahce-yesili);
-      padding-bottom:10px;
+    .relic-content img {
+        max-width: 100%;
     }
-    .toc{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-      margin-bottom:30px;
-      padding:15px;
-      background:rgba(255,255,255,0.05);
-      border-radius:10px;
+    .relic-section h2 {
+        font-size: 1.5em;
     }
-    .toc a{
-      background:var(--bahce-yesili);
-      color:white;
-      padding:10px 18px;
-      border-radius:25px;
-      font-weight:600;
-      text-decoration:none;
-      box-shadow:0 4px 8px rgba(0,0,0,0.4);
-      transition:transform 0.2s, background-color 0.2s;
-    }
-    .toc a:hover{
-      background:var(--altin-sarisi);
-      color:var(--bahce-yesili);
-      transform:translateY(-2px);
-    }
-    .list-intro{
-      margin-bottom:20px;
-      color:var(--altin-sarisi);
-      text-align:center;
-      font-style:italic;
-      padding:0 10px;
-    }
-    .esers{
-      display:flex;
-      flex-direction:column;
-      gap:25px;
-    }
-    .eser{
-      background:rgba(255,255,255,0.08);
-      padding:25px;
-      border-radius:15px;
-      border-left:5px solid var(--bahce-yesili);
-      box-shadow:0 8px 15px rgba(0,0,0,0.5);
-      transition:background-color 0.3s;
-    }
-    .eser:hover{
-        background:rgba(255,255,255,0.12);
-    }
-    .eser h2{
-      font-family:'Playfair Display', serif;
-      font-size:28px;
-      margin-bottom:15px;
-      color:var(--acik-zemin);
-      font-weight:700;
-      border-bottom:1px dashed rgba(255,255,255,0.3);
-      padding-bottom:5px;
-    }
-    .eser .media{
-      display:flex;
-      gap:25px;
-      align-items:flex-start;
-      flex-wrap:wrap;
-    }
-    .eser img{
-      width:380px;
-      max-width:100%;
-      height:auto;
-      border-radius:12px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.8);
-      border:3px solid var(--bahce-yesili);
-    }
-    .eser .desc{
-      flex:1;
-      min-width:250px;
-      color:var(--acik-zemin);
-      line-height:1.8;
-      font-weight:300;
-      padding-top:5px;
-    }
-    .desc strong {
-        color: var(--altin-sarisi);
-        font-weight: 700;
-    }
-    @media (max-width:900px){
-      .hero{padding:20px 10px}
-      .overlay{padding:25px}
-      .page-title{font-size:32px}
-      .eser h2{font-size:24px}
-      .eser .media{flex-direction:column}
-      .eser img{width:100%;}
-    }
-  </style>
+}
+</style>
 </head>
 <body>
-  <div class="hero">
-    <div class="overlay" role="main">
-      <div id="page-title" class="page-title">🌳 Topkapı Sarayı Bahçe ve Avluları</div>
 
-      <nav id="toc" class="toc" aria-label="Bahçe bölümlerine atla">
-        <a id="toc-birinci-avlu" href="#birinci_avlu">Birinci Avlu (Alay Meydanı)</a>
-        <a id="toc-ikinci-avlu" href="#ikinci_avlu">İkinci Avlu (Divan Meydanı)</a>
-        <a id="toc-ucuncu-avlu" href="#ucuncu_avlu">Üçüncü Avlu (Enderun)</a>
-        <a id="toc-dorduncu-avlu" href="#dorduncu_avlu">Dördüncü Avlu (Köşkler Bahçesi)</a>
-        <a id="toc-adalet-kulesi" href="#adalet_kulesi">Adalet Kulesi</a>
-        <a id="toc-babihumayun" href="#babihumayun">Bab-ı Hümayun</a>
-        <a id="toc-mutfaklar" href="#mutfaklar">Saray Mutfakları</a>
-      </nav>
+<header>
+    <h1 id="page-title">TOPKAPI SARAYI AVLULARI VE BAHÇELERİ</h1>
+</header>
 
-      <p id="list-intro" class="list-intro">Aşağıda sarayın dış mekanları ve avluları yer almaktadır. Bu alanlar, saray hayatının resmi ve günlük akışına tanıklık etmiştir.</p>
+<div class="container">
+    <div class="content-box">
 
-      <div class="esers">
-
-        <section id="birinci_avlu" class="eser" aria-labelledby="birinci-avlu-title">
-          <h2 id="birinci-avlu-title">Birinci Avlu (Alay Meydanı)</h2>
-          <div class="media">
-            <img src="/static/images/birinci_avlu.jpg" alt="Birinci Avlu" />
-            <div id="desc-birinci-avlu" class="desc">
-                Birinci Avlu, <strong>sarayın en büyük ve halka açık olan bölümüdür.</strong> Tören alaylarının yapıldığı bu geniş alanda, aynı zamanda Darphane ve Saray Hastanesi gibi yapılar da bulunuyordu.
+        <ul class="relics-toc" id="relics-toc">
+            <li><a href="#bahce-1" id="toc1">Bab-ı Hümayun</a></li>
+            <li><a href="#bahce-2" id="toc2">Alay Meydanı (1. Avlu)</a></li>
+            <li><a href="#bahce-3" id="toc3">Divan Meydanı (2. Avlu)</a></li>
+            <li><a href="#bahce-4" id="toc4">Has Oda Önü (3. Avlu)</a></li>
+            <li><a href="#bahce-5" id="toc5">Bağdat Köşkü</a></li>
+            <li><a href="#bahce-6" id="toc6">Revan Köşkü</a></li>
+            <li><a href="#bahce-7" id="toc7">Gülhane Parkı</a></li>
+        </ul>
+        <section id="bahce-1" class="relic-section">
+            <h2 id="r1-title">Bab-ı Hümayun (Saltanat Kapısı)</h2>
+            <div class="relic-content">
+                <img id="r1-img" src="babi_humayun.jpg" alt="Bab-ı Hümayun">
+                <div class="relic-text">
+                    <p id="r1-text">
+                        Sarayın en dış kapısı ve en anıtsal girişidir. Fatih Sultan Mehmet döneminde inşa edilmiştir. Sadece padişah, Valide Sultan ve saray erkanının atla girebildiği bu kapı, Saray'ın ihtişamının ilk göstergesidir.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="ikinci_avlu" class="eser" aria-labelledby="ikinci-avlu-title">
-          <h2 id="ikinci-avlu-title">İkinci Avlu (Divan Meydanı)</h2>
-          <div class="media">
-            <img src="/static/images/ikinci_avlu.jpg" alt="İkinci Avlu" />
-            <div id="desc-ikinci-avlu" class="desc">
-                Bab-üs Selam'dan geçilerek ulaşılan İkinci Avlu, <strong>sarayın idari merkeziydi.</strong> Divan-ı Hümayun (Kubbealtı) ve Saray Mutfakları bu avluda yer alır, önemli devlet işleri burada görülürdü.
+        <section id="bahce-2" class="relic-section">
+            <h2 id="r2-title">Birinci Avlu: Alay Meydanı</h2>
+            <div class="relic-content">
+                <img id="r2-img" src="alay_meydani.jpg" alt="Alay Meydanı">
+                <div class="relic-text">
+                    <p id="r2-text">
+                        Halka açık tek avludur. Burada, saray fırınları, darphane ve hastane gibi idari yapılar yer alırdı. En önemli özelliği, Osmanlı'dan önce Bizans döneminde de bu bölgede benzer bir meydanın bulunmasıdır.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="ucuncu_avlu" class="eser" aria-labelledby="ucuncu-avlu-title">
-          <h2 id="ucuncu-avlu-title">Üçüncü Avlu (Enderun)</h2>
-          <div class="media">
-            <img src="/static/images/ucuncu_avlu.jpg" alt="Üçüncü Avlu" />
-            <div id="desc-ucuncu-avlu" class="desc">
-                Bu avlu, <strong>padişahın özel hayatının ve Enderun Mektebi'nin (Saray Okulu) bulunduğu iç saray bölümüdür.</strong> Kutsal Emanetler Dairesi de bu alanda yer alır.
+        <section id="bahce-3" class="relic-section">
+            <h2 id="r3-title">İkinci Avlu: Divan Meydanı</h2>
+            <div class="relic-content">
+                <img id="r3-img" src="divan_meydani.jpg" alt="Divan Meydanı">
+                <div class="relic-text">
+                    <p id="r3-text">
+                        Sarayın yönetim merkeziydi. Kubbealtı (Divan-ı Hümayun) ve Hazine binaları bu avluda yer alır. Adından da anlaşılacağı gibi, devlet işlerinin görüşüldüğü ve önemli kararların alındığı yerdir.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="dorduncu_avlu" class="eser" aria-labelledby="dorduncu-avlu-title">
-          <h2 id="dorduncu-avlu-title">Dördüncü Avlu (Köşkler Bahçesi)</h2>
-          <div class="media">
-            <img src="/static/images/dorduncu_avlu.jpg" alt="Dördüncü Avlu" />
-            <div id="desc-dorduncu-avlu" class="desc">
-                Sarayburnu manzaralı bu avlu, <strong>padişahın dinlenme ve eğlence alanıydı.</strong> Bağdat Köşkü ve Revan Köşkü gibi ünlü köşkler ve teras bahçeleri burada bulunur.
+        <section id="bahce-4" class="relic-section">
+            <h2 id="r4-title">Üçüncü Avlu: Enderun Avlusu</h2>
+            <div class="relic-content">
+                <img id="r4-img" src="enderun_avlusu.jpg" alt="Enderun Avlusu">
+                <div class="relic-text">
+                    <p id="r4-text">
+                        Padişahın özel hayatına ve eğitimine ayrılmış, en mahrem avludur. Enderun Okulu'nun bulunduğu bu alan, Saray'ın iç hizmetinin (Enderun) yetiştirildiği yerdi. Kutsal Emanetler Dairesi de buradadır.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="adalet_kulesi" class="eser" aria-labelledby="adalet-kulesi-title">
-          <h2 id="adalet-kulesi-title">Adalet Kulesi</h2>
-          <div class="media">
-            <img src="/static/images/adalet_kulesi.jpg" alt="Adalet Kulesi" />
-            <div id="desc-adalet-kulesi" class="desc">
-                Divan-ı Hümayun'un üzerinde yükselen <strong>Adalet Kulesi, sarayın en yüksek yapılarından biridir.</strong> Padişahın, toplantıları gizlice izlediği ve adaletinin gözetlendiği bir simge olarak kullanılmıştır.
+        <section id="bahce-5" class="relic-section">
+            <h2 id="r5-title">Bağdat Köşkü</h2>
+            <div class="relic-content">
+                <img id="r5-img" src="bagdat_kosku.jpg" alt="Bağdat Köşkü">
+                <div class="relic-text">
+                    <p id="r5-text">
+                        Sarayın dördüncü avlusunda yer alan bu zarif köşk, Sultan IV. Murad'ın Bağdat fethi anısına 1638 yılında inşa edilmiştir. Klasik Osmanlı mimarisinin ve çini sanatının en güzel örneklerinden biridir.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="babihumayun" class="eser" aria-labelledby="babihumayun-title">
-          <h2 id="babihumayun-title">Bab-ı Hümayun (Saltanat Kapısı)</h2>
-          <div class="media">
-            <img src="/static/images/babihumayun.jpg" alt="Bab-ı Hümayun" />
-            <div id="desc-babihumayun" class="desc">
-                Topkapı Sarayı'nın <strong>anıtsal giriş kapısıdır.</strong> Üzerindeki kitabeler ve süslemeler, Osmanlı mimarisinin görkemini yansıtır ve saray protokolünün başladığı noktadır.
+        <section id="bahce-6" class="relic-section">
+            <h2 id="r6-title">Revan Köşkü</h2>
+            <div class="relic-content">
+                <img id="r6-img" src="revan_kosku.jpg" alt="Revan Köşkü">
+                <div class="relic-text">
+                    <p id="r6-text">
+                        Yine IV. Murad tarafından, Revan (Erivan) zaferinin anısına 1635 yılında yaptırılmıştır. Bağdat Köşkü'ne benzeyen sekizgen planlı yapısıyla Sarayburnu manzarasına hakim bir konumda bulunur ve padişahın dinlenme alanıydı.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
 
-        <section id="mutfaklar" class="eser" aria-labelledby="mutfaklar-title">
-          <h2 id="mutfaklar-title">Saray Mutfakları</h2>
-          <div class="media">
-            <img src="/static/images/saray_mutfaklari.jpg" alt="Saray Mutfakları" />
-            <div id="desc-mutfaklar" class="desc">
-                İkinci Avlu'nun sağ tarafında yer alan mutfaklar, <strong>günde binlerce kişiye yemek hazırlanan devasa bir komplekstir.</strong> Günümüzde porselen ve gümüş koleksiyonlarının sergilendiği alandır.
+        <section id="bahce-7" class="relic-section">
+            <h2 id="r7-title">Gülhane Parkı (Eski Dış Bahçeler)</h2>
+            <div class="relic-content">
+                <img id="r7-img" src="gulhane_parki.jpg" alt="Gülhane Parkı">
+                <div class="relic-text">
+                    <p id="r7-text">
+                        Sarayın dış bahçelerinin bir parçası olan Gülhane, ismini Gülhane Hatt-ı Hümayunu ile özdeşleştirmiştir. Eskiden sarayın özel çiçek bahçesi iken, günümüzde İstanbul'un en popüler ve halka açık parklarından biri haline gelmiştir.
+                    </p>
+                </div>
             </div>
-          </div>
         </section>
-
-      </div>
 
     </div>
-  </div>
+
+    <a href="index.html" class="back-button" id="back-btn">← Bölümler Menüsüne Geri Dön</a>
+</div>
+
 
 <script>
-// Dil çevirileri için veri yapısı
+// Çeviri Verisi (BAHÇELER VE AVLULAR)
 const translations = {
     'tr': {
-        pageTitle: '🌳 Topkapı Sarayı Bahçe ve Avluları',
-        listIntro: 'Aşağıda sarayın dış mekanları ve avluları yer almaktadır. Bu alanlar, saray hayatının resmi ve günlük akışına tanıklık etmiştir.',
-        // Eser İsimleri
-        toc1: 'Birinci Avlu (Alay Meydanı)', toc2: 'İkinci Avlu (Divan Meydanı)', toc3: 'Üçüncü Avlu (Enderun)', toc4: 'Dördüncü Avlu (Köşkler Bahçesi)', toc5: 'Adalet Kulesi', toc6: 'Bab-ı Hümayun', toc7: 'Saray Mutfakları',
-        title1: 'Birinci Avlu (Alay Meydanı)', title2: 'İkinci Avlu (Divan Meydanı)', title3: 'Üçüncü Avlu (Enderun)', title4: 'Dördüncü Avlu (Köşkler Bahçesi)', title5: 'Adalet Kulesi', title6: 'Bab-ı Hümayun (Saltanat Kapısı)', title7: 'Saray Mutfakları',
-        // Eser Açıklamaları (TR)
-        desc1: 'Birinci Avlu, <strong>sarayın en büyük ve halka açık olan bölümüdür.</strong> Tören alaylarının yapıldığı bu geniş alanda, aynı zamanda Darphane ve Saray Hastanesi gibi yapılar da bulunuyordu.',
-        desc2: 'Bab-üs Selam\'dan geçilerek ulaşılan İkinci Avlu, <strong>sarayın idari merkeziydi.</strong> Divan-ı Hümayun (Kubbealtı) ve Saray Mutfakları bu avluda yer alır, önemli devlet işleri burada görülürdü.',
-        desc3: 'Bu avlu, <strong>padişahın özel hayatının ve Enderun Mektebi\'nin (Saray Okulu) bulunduğu iç saray bölümüdür.</strong> Kutsal Emanetler Dairesi de bu alanda yer alır.',
-        desc4: 'Sarayburnu manzaralı bu avlu, <strong>padişahın dinlenme ve eğlence alanıydı.</strong> Bağdat Köşkü ve Revan Köşkü gibi ünlü köşkler ve teras bahçeleri burada bulunur.',
-        desc5: 'Divan-ı Hümayun\'un üzerinde yükselen <strong>Adalet Kulesi, sarayın en yüksek yapılarından biridir.</strong> Padişahın, toplantıları gizlice izlediği ve adaletinin gözetlendiği bir simge olarak kullanılmıştır.',
-        desc6: 'Topkapı Sarayı\'nın <strong>anıtsal giriş kapısıdır.</strong> Üzerindeki kitabeler ve süslemeler, Osmanlı mimarisinin görkemini yansıtır ve saray protokolünün başladığı noktadır.',
-        desc7: 'İkinci Avlu\'nun sağ tarafında yer alan mutfaklar, <strong>günde binlerce kişiye yemek hazırlanan devasa bir komplekstir.</strong> Günümüzde porselen ve gümüş koleksiyonlarının sergilendiği alandır.',
+        titleTag: 'Bahçeler ve Avlular | Topkapı Sarayı',
+        pageTitle: 'TOPKAPI SARAYI AVLULARI VE BAHÇELERİ',
+        toc1: 'Bab-ı Hümayun', toc2: 'Alay Meydanı (1. Avlu)', toc3: 'Divan Meydanı (2. Avlu)', toc4: 'Has Oda Önü (3. Avlu)', toc5: 'Bağdat Köşkü', toc6: 'Revan Köşkü', toc7: 'Gülhane Parkı',
+        r1Title: 'Bab-ı Hümayun (Saltanat Kapısı)', r1Text: 'Sarayın en dış kapısı ve en anıtsal girişidir. Fatih Sultan Mehmet döneminde inşa edilmiştir. Sadece padişah, Valide Sultan ve saray erkanının atla girebildiği bu kapı, Saray\'ın ihtişamının ilk göstergesidir.',
+        r2Title: 'Birinci Avlu: Alay Meydanı', r2Text: 'Halka açık tek avludur. Burada, saray fırınları, darphane ve hastane gibi idari yapılar yer alırdı. En önemli özelliği, Osmanlı\'dan önce Bizans döneminde de bu bölgede benzer bir meydanın bulunmasıdır.',
+        r3Title: 'İkinci Avlu: Divan Meydanı', r3Text: 'Sarayın yönetim merkeziydi. Kubbealtı (Divan-ı Hümayun) ve Hazine binaları bu avluda yer alır. Adından da anlaşılacağı gibi, devlet işlerinin görüşüldüğü ve önemli kararların alındığı yerdir.',
+        r4Title: 'Üçüncü Avlu: Enderun Avlusu', r4Text: 'Padişahın özel hayatına ve eğitimine ayrılmış, en mahrem avludur. Enderun Okulu\'nun bulunduğu bu alan, Saray\'ın iç hizmetinin (Enderun) yetiştirildiği yerdi. Kutsal Emanetler Dairesi de buradadır.',
+        r5Title: 'Bağdat Köşkü', r5Text: 'Sarayın dördüncü avlusunda yer alan bu zarif köşk, Sultan IV. Murad\'ın Bağdat fethi anısına 1638 yılında inşa edilmiştir. Klasik Osmanlı mimarisinin ve çini sanatının en güzel örneklerinden biridir.',
+        r6Title: 'Revan Köşkü', r6Text: 'Yine IV. Murad tarafından, Revan (Erivan) zaferinin anısına 1635 yılında yaptırılmıştır. Bağdat Köşkü\'ne benzeyen sekizgen planlı yapısıyla Sarayburnu manzarasına hakim bir konumda bulunur ve padişahın dinlenme alanıydı.',
+        r7Title: 'Gülhane Parkı (Eski Dış Bahçeler)', r7Text: 'Sarayın dış bahçelerinin bir parçası olan Gülhane, ismini Gülhane Hatt-ı Hümayunu ile özdeşleştirmiştir. Eskiden sarayın özel çiçek bahçesi iken, günümüzde İstanbul\'un en popüler ve halka açık parklarından biri haline gelmiştir.',
+        backBtn: '← Bölümler Menüsüne Geri Dön'
     },
     'en': {
-        pageTitle: '🌳 Topkapi Palace Courtyards and Gardens',
-        listIntro: 'Below are the outer areas and courtyards of the palace. These areas witnessed the official and daily flow of palace life.',
-        // Eser İsimleri (EN)
-        toc1: 'First Courtyard (Parade Court)', toc2: 'Second Courtyard (Divan Square)', toc3: 'Third Courtyard (Enderun)', toc4: 'Fourth Courtyard (Terrace Gardens)', toc5: 'Tower of Justice', toc6: 'Imperial Gate (Bab-ı Hümayun)', toc7: 'Palace Kitchens',
-        title1: 'First Courtyard (Parade Court)', title2: 'Second Courtyard (Divan Square)', title3: 'Third Courtyard (Enderun)', title4: 'Fourth Courtyard (Terrace Gardens)', title5: 'Tower of Justice', title6: 'Imperial Gate (Bab-ı Hümayun)', title7: 'Palace Kitchens',
-        // Eser Açıklamaları (EN)
-        desc1: 'The First Courtyard is <strong>the largest and most publicly accessible section of the palace.</strong> Military parades were held here, and it also housed structures like the Imperial Mint and Palace Hospital.',
-        desc2: 'The Second Courtyard, reached through the Gate of Salutation (Bab-üs Selam), was <strong>the administrative center of the palace.</strong> The Imperial Council (Divan-ı Hümayun) and Palace Kitchens are located in this courtyard.',
-        desc3: 'This courtyard is <strong>the inner palace section where the Sultan\'s private life and the Enderun School (Palace School) were located.</strong> The Chamber of Holy Relics is also situated here.',
-        desc4: 'This courtyard, overlooking Sarayburnu, was <strong>the Sultan\'s area for relaxation and entertainment.</strong> Famous pavilions like the Baghdad Kiosk and Revan Kiosk are found here.',
-        desc5: 'Rising above the Imperial Council, the <strong>Tower of Justice is one of the highest structures in the palace.</strong> It symbolizes the Sultan\'s vigilance and monitoring of justice.',
-        desc6: 'It is the <strong>monumental entrance gate of Topkapi Palace.</strong> The inscriptions and decorations on it reflect the grandeur of Ottoman architecture and mark the beginning of palace protocol.',
-        desc7: 'The kitchens, located on the right side of the Second Courtyard, are <strong>a vast complex where meals for thousands of people were prepared daily.</strong> Today, it is an area where porcelain and silver collections are exhibited.',
+        titleTag: 'Courtyards and Gardens | Topkapi Palace',
+        pageTitle: 'TOPKAPI PALACE COURTYARDS AND GARDENS',
+        toc1: 'Gate of Salutation', toc2: 'Parade Court (1st Courtyard)', toc3: 'Council Court (2nd Courtyard)', toc4: 'Enderun Court (3rd Courtyard)', toc5: 'Baghdad Kiosk', toc6: 'Revan Kiosk', toc7: 'Gülhane Park',
+        r1Title: 'Bab-ı Hümayun (Imperial Gate)', r1Text: 'The outermost gate of the Palace and the most monumental entrance. Built during the reign of Fatih Sultan Mehmet. Only the Sultan, the Valide Sultan, and palace officials could enter this gate on horseback, making it the first indication of the Palace\'s grandeur.',
+        r2Title: 'First Courtyard: The Parade Court', r2Text: 'The only courtyard open to the public. Administrative buildings such as the palace bakeries, the mint, and the hospital were located here. Its most important feature is the existence of a similar square in this area during the Byzantine period before the Ottomans.',
+        r3Title: 'Second Courtyard: The Council Court', r3Text: 'The administrative center of the Palace. The Imperial Council (Divan-ı Hümayun) and Treasury buildings are located in this courtyard. As its name suggests, it is where state affairs were discussed and important decisions were made.',
+        r4Title: 'Third Courtyard: The Enderun Court', r4Text: 'The most private courtyard, dedicated to the Sultan\'s personal life and education. This area, where the Enderun School was located, was where the Palace\'s inner service (Enderun) was trained. The Chamber of Holy Relics is also here.',
+        r5Title: 'Baghdad Kiosk', r5Text: 'This elegant kiosk, located in the fourth courtyard of the Palace, was built in 1638 to commemorate Sultan Murad IV\'s conquest of Baghdad. It is one of the finest examples of classical Ottoman architecture and tile art.',
+        r6Title: 'Revan Kiosk', r6Text: 'Also built by Murad IV in 1635 to commemorate the victory of Revan (Yerevan). With its octagonal plan resembling the Baghdad Kiosk, it commands a view of Sarayburnu and was the Sultan\'s resting area.',
+        r7Title: 'Gülhane Park (Former Outer Gardens)', r7Text: 'Gülhane, part of the Palace\'s outer gardens, is synonymous with the Imperial Edict of Gülhane. Once the Palace\'s private flower garden, it has now become one of Istanbul\'s most popular public parks.',
+        backBtn: '← Back to Sections Menu'
     },
+    // Lütfen RU ve AR çevirilerini buraya ekleyiniz
     'ru': {
-        pageTitle: '🌳 Дворы и сады дворца Топкапы',
-        listIntro: 'Ниже представлены внешние территории и дворы дворца. Эти места были свидетелями официального и повседневного течения дворцовой жизни.',
-        // Eser İsimleri (RU)
-        toc1: 'Первый двор (Парадный)', toc2: 'Второй двор (Диванная площадь)', toc3: 'Третий двор (Эндерун)', toc4: 'Четвертый двор (Террасовые сады)', toc5: 'Башня Справедливости', toc6: 'Имперские Ворота (Баб-ы Хюмаюн)', toc7: 'Дворцовые кухни',
-        title1: 'Первый двор (Парадный)', title2: 'Второй двор (Диванная площадь)', title3: 'Третий двор (Эндерун)', title4: 'Четвертый двор (Террасовые сады)', title5: 'Башня Справедливости', title6: 'Имперские Ворота (Баб-ы Хюмаюн)', title7: 'Дворцовые кухни',
-        // Eser Açıklamaları (RU)
-        desc1: 'Первый двор — это <strong>самая большая и наиболее доступная для публики часть дворца.</strong> Здесь проводились церемониальные парады, а также находились такие постройки, как Монетный двор и Дворцовый госпиталь.',
-        desc2: 'Второй двор, куда попадают через Ворота Приветствия (Баб-юс Селам), был <strong>административным центром дворца.</strong> Здесь располагались Имперский Диван (Куббеалты) и Дворцовые кухни.',
-        desc3: 'Этот двор является <strong>внутренней частью дворца, где находилась личная жизнь султана и школа Эндерун (Дворцовая школа).</strong> Здесь же расположена Палата Священных Реликвий.',
-        desc4: 'Этот двор с видом на Сарайбурну был <strong>зоной отдыха и развлечений султана.</strong> Здесь находятся знаменитые павильоны, такие как Багдадский и Реванский киоски, и террасовые сады.',
-        desc5: 'Воздвигающаяся над Имперским Диваном <strong>Башня Справедливости является одним из самых высоких сооружений во дворце.</strong> Она использовалась как символ наблюдения султана за правосудием.',
-        desc6: 'Это <strong>монументальные входные ворота дворца Топкапы.</strong> Надписи и украшения на них отражают величие османской архитектуры и являются началом дворцового протокола.',
-        desc7: 'Кухни, расположенные с правой стороны Второго двора, представляют собой <strong>огромный комплекс, где ежедневно готовили еду для тысяч людей.</strong> Сегодня здесь выставлены коллекции фарфора и серебра.',
+        titleTag: 'Дворы и Сады | Дворец Топкапы',
+        pageTitle: 'ДВОРЫ И САДЫ ДВОРЦА ТОПКАПЫ',
+        toc1: 'Имперские Ворота', toc2: 'Парадный Двор (1-й)', toc3: 'Двор Дивана (2-й)', toc4: 'Двор Эндерун (3-й)', toc5: 'Багдадский Павильон', toc6: 'Реванский Павильон', toc7: 'Парк Гюльхане',
+        r1Title: 'Баб-и Хюмаюн (Имперские Ворота)', r1Text: 'Самые внешние и монументальные ворота Дворца. Построены во времена Фатиха Султана Мехмеда. Только Султан, Валиде Султан и придворные чиновники могли въезжать через эти ворота верхом, что являлось первым признаком величия Дворца.',
+        r2Title: 'Первый Двор: Парадный Двор', r2Text: 'Единственный двор, открытый для публики. Здесь располагались административные здания, такие как дворцовые пекарни, монетный двор и больница. Его важнейшая особенность - наличие аналогичной площади в этом районе еще в византийский период до османов.',
+        r3Title: 'Второй Двор: Двор Дивана', r3Text: 'Административный центр Дворца. Здесь находятся здания Имперского Совета (Диван-и Хумаюн) и Казначейства. Как следует из названия, это место, где обсуждались государственные дела и принимались важные решения.',
+        r4Title: 'Третий Двор: Двор Эндеруна', r4Text: 'Самый сокровенный двор, посвященный личной жизни и образованию Султана. Эта область, где располагалась Школа Эндерун, была местом подготовки внутренней службы Дворца (Эндерун). Палата Священных Реликвий также находится здесь.',
+        r5Title: 'Багдадский Павильон', r5Text: 'Этот элегантный павильон, расположенный в четвертом дворе Дворца, был построен в 1638 году в ознаменование завоевания Багдада Султаном Мурадом IV. Это один из лучших образцов классической османской архитектуры и искусства изразцов.',
+        r6Title: 'Реванский Павильон', r6Text: 'Также построен Мурадом IV в 1635 году в ознаменование победы при Реване (Ереване). Благодаря своей восьмиугольной планировке, похожей на Багдадский павильон, он находится в месте с видом на Сарайбурну и был зоной отдыха Султана.',
+        r7Title: 'Парк Гюльхане (Бывшие Внешние Сады)', r7Text: 'Гюльхане, часть внешних садов Дворца, отождествляется с Имперским указом Гюльхане. Когда-то это был частный цветочный сад Дворца, а сейчас он стал одним из самых популярных общественных парков Стамбула.',
+        backBtn: '← Вернуться в Меню Разделов'
     },
     'ar': {
-        pageTitle: '🌳 أفنية وحدائق قصر طوب قابي',
-        listIntro: 'فيما يلي المناطق الخارجية والأفنية للقصر. شهدت هذه المناطق التدفق الرسمي واليومي لحياة القصر.',
-        // Eser İsimleri (AR)
-        toc1: 'الفناء الأول (ساحة العرض)', toc2: 'الفناء الثاني (ساحة الديوان)', toc3: 'الفناء الثالث (الأندرون)', toc4: 'الفناء الرابع (حدائق التراس)', toc5: 'برج العدل', toc6: 'الباب السلطاني (باب همايون)', toc7: 'مطابخ القصر',
-        title1: 'الفناء الأول (ساحة العرض)', title2: 'الفناء الثاني (ساحة الديوان)', title3: 'الفناء الثالث (الأندرون)', title4: 'الفناء الرابع (حدائق التراس)', title5: 'برج العدل', title6: 'الباب السلطاني (باب همايون)', title7: 'مطابخ القصر',
-        // Eser Açıklamaları (AR)
-        desc1: 'الفناء الأول هو <strong>الجزء الأكبر والأكثر إتاحة للجمهور في القصر.</strong> كانت تقام فيه مواكب الاحتفالات، كما كان يضم مبانٍ مثل دار السك ومستشفى القصر.',
-        desc2: 'الفناء الثاني، الذي يتم الوصول إليه عبر باب السلام، كان <strong>المركز الإداري للقصر.</strong> يقع فيه الديوان الهمايوني (تحت القبة) ومطابخ القصر، وكانت تُعقد فيه أعمال الدولة المهمة.',
-        desc3: 'هذا الفناء هو <strong>القسم الداخلي للقصر حيث كانت تقع الحياة الخاصة للسلطان ومدرسة الأندرون (مدرسة القصر).</strong> كما تقع فيه دائرة الآثار المقدسة.',
-        desc4: 'كان هذا الفناء، المطل على سراي بورنو، <strong>منطقة استراحة وترفيه للسلطان.</strong> توجد فيه الأجنحة الشهيرة مثل جناح بغداد وجناح ريوان والحدائق المتدرجة.',
-        desc5: 'برج العدل, الذي يرتفع فوق الديوان الهمايوني, هو <strong>أحد أطول المباني في القصر.</strong> تم استخدامه كرمز لمراقبة السلطان للعدالة.',
-        desc6: 'هو <strong>البوابة الأثرية الرئيسية لقصر طوب قابي.</strong> تعكس النقوش والزخارف الموجودة عليه عظمة العمارة العثمانية وتمثل نقطة بداية بروتوكول القصر.',
-        desc7: 'المطابخ، الواقعة على الجانب الأيمن من الفناء الثاني، هي <strong>مجمع ضخم كان يتم فيه إعداد وجبات الطعام لآلاف الأشخاص يوميًا.</strong> وهي اليوم منطقة تُعرض فيها مجموعات الخزف والفضة.',
+        titleTag: 'الأفنية والحدائق | قصر طوب قابي',
+        pageTitle: 'أفنية وحدائق قصر طوب قابي',
+        toc1: 'الباب الهمايوني', toc2: 'ساحة العرض (الفناء الأول)', toc3: 'ساحة الديوان (الفناء الثاني)', toc4: 'فناء الأندرون (الفناء الثالث)', toc5: 'كشك بغداد', toc6: 'كشك ريفان', toc7: 'حديقة غولهانه',
+        r1Title: 'الباب الهمايوني (باب السلطنة)', r1Text: 'أبعد بوابة للقصر وأكثرها فخامة. بنيت في عهد الفاتح السلطان محمد. كان بإمكان السلطان والوالدة السلطان ومسؤولي القصر فقط الدخول من هذه البوابة على ظهور الخيل، مما يجعلها أول مؤشر على عظمة القصر.',
+        r2Title: 'الفناء الأول: ساحة العرض', r2Text: 'الفناء الوحيد المفتوح للجمهور. كانت المباني الإدارية مثل أفران القصر ودار الضرب والمستشفى تقع هنا. أهم ما يميزه هو وجود ساحة مماثلة في هذه المنطقة خلال الفترة البيزنطية قبل العثمانيين.',
+        r3Title: 'الفناء الثاني: ساحة الديوان', r3Text: 'المركز الإداري للقصر. تقع مباني الديوان الهمايوني والخزانة في هذا الفناء. وكما يوحي اسمها، هو المكان الذي نوقشت فيه شؤون الدولة واتخذت فيه القرارات الهامة.',
+        r4Title: 'الفناء الثالث: فناء الأندرون', r4Text: 'الفناء الأكثر خصوصية، المخصص لحياة السلطان الشخصية وتعليمه. كانت هذه المنطقة، حيث تقع مدرسة الأندرون، هي المكان الذي يتم فيه تدريب الخدمة الداخلية للقصر. تقع حجرة الآثار المقدسة هنا أيضاً.',
+        r5Title: 'كشك بغداد', r5Text: 'بني هذا الكشك الأنيق، الواقع في الفناء الرابع للقصر، عام 1638 تخليداً لذكرى فتح السلطان مراد الرابع لبغداد. وهو أحد أروع الأمثلة على العمارة العثمانية الكلاسيكية وفن القاشاني.',
+        r6Title: 'كشك ريفان', r6Text: 'كما بناه مراد الرابع عام 1635 تخليداً لذكرى انتصار ريفان (يريفان). بمخططه المثمن الذي يشبه كشك بغداد، يقع في موقع يطل على سراي بورنو وكان منطقة استراحة للسلطان.',
+        r7Title: 'حديقة غولهانه (الحدائق الخارجية السابقة)', r7Text: 'حديقة غولهانه، وهي جزء من حدائق القصر الخارجية، مرادفة للخط الهمايوني لغولهانه. كانت في السابق حديقة الزهور الخاصة بالقصر، وأصبحت الآن واحدة من أكثر المتنزهات العامة شعبية في إسطنبول.',
+        backBtn: '← العودة إلى قائمة الأقسام'
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    // URL'den dil parametresini al
-    const urlParams = new URLSearchParams(window.location.search);
-    const lang = urlParams.get('lang') || 'tr'; // Eğer parametre yoksa varsayılan olarak Türkçe
-
-    // Sayfa içeriğini güncelle
-    updateContent(lang);
-
-    // Arapça için sağdan sola okuma yönü (RTL) ayarı
-    if (lang === 'ar') {
-        document.body.style.direction = 'rtl';
-    }
-});
+// Fonksiyon: URL'den dil parametresini okuma ve içeriği çevirme
+function getLangFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('lang') || 'tr';
+}
 
 function updateContent(lang) {
     const t = translations[lang];
+    if (!t) return;
 
-    // Ana Başlık ve Giriş Metni
-    document.getElementById('page-title').innerHTML = t.pageTitle;
-    document.getElementById('list-intro').innerHTML = t.listIntro;
+    document.getElementById('title-tag').innerText = t.titleTag;
+    document.getElementById('page-title').innerText = t.pageTitle;
+    document.getElementById('back-btn').innerText = t.backBtn;
 
-    // TOC (İçerik Listesi) Başlıkları
-    document.getElementById('toc-birinci-avlu').innerText = t.toc1;
-    document.getElementById('toc-ikinci-avlu').innerText = t.toc2;
-    document.getElementById('toc-ucuncu-avlu').innerText = t.toc3;
-    document.getElementById('toc-dorduncu-avlu').innerText = t.toc4;
-    document.getElementById('toc-adalet-kulesi').innerText = t.toc5;
-    document.getElementById('toc-babihumayun').innerText = t.toc6;
-    document.getElementById('toc-mutfaklar').innerText = t.toc7;
+    // Menü Başlıkları (TOC)
+    document.getElementById('toc1').innerText = t.toc1;
+    document.getElementById('toc2').innerText = t.toc2;
+    document.getElementById('toc3').innerText = t.toc3;
+    document.getElementById('toc4').innerText = t.toc4;
+    document.getElementById('toc5').innerText = t.toc5;
+    document.getElementById('toc6').innerText = t.toc6;
+    document.getElementById('toc7').innerText = t.toc7;
 
-    // Eser Başlıkları ve Açıklamaları (Bilgi Kartları)
-    document.getElementById('birinci-avlu-title').innerText = t.title1;
-    document.getElementById('desc-birinci-avlu').innerHTML = t.desc1; // BİLGİ KARTI
-
-    document.getElementById('ikinci-avlu-title').innerText = t.title2;
-    document.getElementById('desc-ikinci-avlu').innerHTML = t.desc2; // BİLGİ KARTI
-
-    document.getElementById('ucuncu-avlu-title').innerText = t.title3;
-    document.getElementById('desc-ucuncu-avlu').innerHTML = t.desc3; // BİLGİ KARTI
-
-    document.getElementById('dorduncu-avlu-title').innerText = t.title4;
-    document.getElementById('desc-dorduncu-avlu').innerHTML = t.desc4; // BİLGİ KARTI
-
-    document.getElementById('adalet-kulesi-title').innerText = t.title5;
-    document.getElementById('desc-adalet-kulesi').innerHTML = t.desc5; // BİLGİ KARTI
-
-    document.getElementById('babihumayun-title').innerText = t.title6;
-    document.getElementById('desc-babihumayun').innerHTML = t.desc6; // BİLGİ KARTI
-
-    document.getElementById('mutfaklar-title').innerText = t.title7;
-    document.getElementById('desc-mutfaklar').innerHTML = t.desc7; // BİLGİ KARTI
+    // Bölüm Başlıkları ve Metinleri
+    document.getElementById('r1-title').innerText = t.r1Title;
+    document.getElementById('r1-text').innerText = t.r1Text;
+    document.getElementById('r2-title').innerText = t.r2Title;
+    document.getElementById('r2-text').innerText = t.r2Text;
+    document.getElementById('r3-title').innerText = t.r3Title;
+    document.getElementById('r3-text').innerText = t.r3Text;
+    document.getElementById('r4-title').innerText = t.r4Title;
+    document.getElementById('r4-text').innerText = t.r4Text;
+    document.getElementById('r5-title').innerText = t.r5Title;
+    document.getElementById('r5-text').innerText = t.r5Text;
+    document.getElementById('r6-title').innerText = t.r6Title;
+    document.getElementById('r6-text').innerText = t.r6Text;
+    document.getElementById('r7-title').innerText = t.r7Title;
+    document.getElementById('r7-text').innerText = t.r7Text;
 }
 
+window.onload = function() {
+    const lang = getLangFromUrl();
+    updateContent(lang);
+};
 </script>
+
 </body>
 </html>
